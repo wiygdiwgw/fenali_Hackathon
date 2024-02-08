@@ -1,99 +1,201 @@
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Root font size calculation */
+:root {
+  font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
+}
+
+/* Body and input font */
+body,
+button,
+input {
+  font: 1em Hind, sans-serif;
+  line-height: 1.5em;
+}
+
+/* Color scheme */
+body,
+input {
+  color: #110e3e;
+}
+
+/* Body background */
+body {
+  background: #f1f1f1;
+  height: 100vh;
+}
+
+/* Navbar container */
 .container {
   width: 100%;
   height: 6rem;
-  background-color: #1a1d29;
+  background-color: #222943;
   display: flex;
   align-items: center;
-  position: absolute;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
 
+/* Left section */
 .left {
-  vertical-align: baseline;
-  text-align: left;
-  font-size: 18px;
-  margin-left: 4rem;
-  position: relative;
+  flex: 1;
 }
 
-.right {
-  display: flex;
-  margin-left: 50rem;
-  position: relative;
-}
-
-.acc_block {
-  text-align: left;
-  font-size: 18px;
-  background-color: #1a1d29;
-  color: #8d8e94;
-  display: flex;
-  position: relative;
-}
-
-.search_block_1 {
-  background-color: #0a78ff;
-  color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 8px;
-  height: 2.4rem;
-  width: 10rem;
-  position: relative;
-}
-
-.search_block_1::placeholder {
-  color: #fff;
-}
-
-.fav_block_1 {
-  margin-left: 1rem;
-  height: 30px;
-  width: 34px;
-  position: relative;
-}
-
-.watched_block_1 {
-  height: 30px;
-  width: 34px;
-  position: relative;
-}
-
-.seperator {
-  text-align: left;
-  height: 2rem;
-  width: 2px;
-  background-color: #8d8e94;
-  margin-left: 1rem;
-  position: relative;
-}
-
-.logo_1 {
+.left a {
+  color: black;
   text-decoration: none;
-  color: #fff;
   font-size: 50px;
 }
 
-.login_1 {
-  margin-left: 1rem;
-  background-color: #0a78ff;
-  color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 8px;
-  height: 2.4rem;
-  width: 10rem;
+/* Right section */
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Account block */
+.accBlock {
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+/* Search block */
+.searchBlock {
   position: relative;
 }
 
-.login_2 {
+/* Search button */
+.searchButton {
+  background: #0a78ff;
+  border: none;
+  border-radius: 0.75em;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  outline: none;
+}
+
+/* Search button - span */
+.searchButton span {
+  color: #fff;
+}
+
+/* Search input */
+.searchInput {
+  width: 200px; /* Increase width as needed */
+  padding: 1em; /* Increase padding as needed */
+  margin-top: 0.5em;
+  border: none;
+  border-radius: 0.75em;
+  outline: none;
+  box-shadow: 0 0 0 0.4em #0a78ff inset;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Search input - placeholder */
+.searchInput::placeholder {
+  color: #8d8e94;
+}
+
+/* Search input - focus state */
+.searchInput:focus {
+  box-shadow: 0 0 0 0.1em #0a78ff inset;
+}
+
+/* Icon block */
+.iconBlock {
+  margin-left: 0.5rem;
+}
+
+/* Icon */
+.icon {
+  margin-right: 0.5rem;
   height: 30px;
   width: 34px;
+}
+
+/* Login button */
+.loginButton {
+  background: #0a78ff;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 0.75em;
+  padding: 0.75em 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Avatar icon */
+.avatarIcon {
+  height: 30px;
+  width: 34px;
+  border: none;
+  outline: none;
+}
+
+/* Login link */
+.loginLink {
+  background: #0a78ff;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 0.75em;
+  padding: 0.75em 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .searchInput {
+    width: 150px; /* Adjust width for smaller screens */
+  }
+
+  .left a {
+    font-size: 30px;
+  }
+
+  .loginLink,
+  .loginButton {
+    padding: 0.5em 1em; /* Adjust padding for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Adjust styles for even smaller screens */
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .left a {
+    font-size: 20px;
+  }
+  .searchInput {
+    width: 100px; /* Further adjust width for even smaller screens */
+  }
+
+  .loginLink,
+  .loginButton {
+    padding: 0.25em 0.5em; /* Further adjust padding for even smaller screens */
+  }
 }
