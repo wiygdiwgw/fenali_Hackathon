@@ -1,7 +1,19 @@
-import React from "react";
+import React from 'react'
+import { useViewed } from '../context/ViewedContextProvider'
 
 const Viewed = () => {
-  return <div></div>;
-};
+	const { viewed } = useViewed()
 
-export default Viewed;
+	return (
+		<div>
+			<h2>Просмотренные фильмы:</h2>
+			<ul>
+				{viewed.map(elem => (
+					<li key={elem.id}>{elem.title}</li>
+				))}
+			</ul>
+		</div>
+	)
+}
+
+export default Viewed

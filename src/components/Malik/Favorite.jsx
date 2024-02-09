@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from 'react'
+
+import ProductCard from '../product/ProductCard'
+import { useFavorite } from '../context/FavoriteContextProvider'
 
 const Favorite = () => {
-  return <div></div>;
-};
+	const { favorites, getFavorites } = useFavorite()
 
-export default Favorite;
+	useEffect(() => {
+		getFavorites()
+	}, [])
+
+	return (
+		<div>
+			<h2>Избранное</h2>
+			<ul>
+				{favorites.map(favorite => (
+					<li key={favorite.id}>
+						<ProductCard />
+					</li>
+				))}
+			</ul>
+		</div>
+	)
+}
+
+export default Favorite
