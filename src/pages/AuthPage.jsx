@@ -11,22 +11,25 @@ const AuthPage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.buttonContainer}>
-        <span
-          className={`${styles.button} ${showLogin ? styles.active : ""}`}
-          onClick={() => setShowLogin(true)}
-        >
-          Вход
-        </span>
-        <span
-          className={`${styles.button} ${!showLogin ? styles.active : ""}`}
-          onClick={() => setShowLogin(false)}
-        >
-          Регистрация
-        </span>
+    <div className={styles.bg}>
+      <div className={styles.container}>
+        <div className={styles.buttonContainer}>
+          <span
+            className={`${styles.button} ${showLogin ? styles.active : ""}`}
+            onClick={() => setShowLogin(true)}
+          >
+            Вход
+          </span>
+          <div className={styles.buttonSeperator}></div>
+          <span
+            className={`${styles.button} ${!showLogin ? styles.active : ""}`}
+            onClick={() => setShowLogin(false)}
+          >
+            Регистрация
+          </span>
+        </div>
+        {showLogin ? <Login /> : <Register />}
       </div>
-      {showLogin ? <Login /> : <Register />}
     </div>
   );
 };
