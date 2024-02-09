@@ -92,12 +92,13 @@ body {
 /* Search input */
 .searchInput {
   width: 200px; /* Increase width as needed */
+  height: 2.5rem;
   padding: 1em; /* Increase padding as needed */
-  margin-top: 0.5em;
+  margin-top: 0.3em;
   border: none;
   border-radius: 0.75em;
   outline: none;
-  box-shadow: 0 0 0 0.4em #0a78ff inset;
+  box-shadow: 0 0 0 0.2em #0a78ff inset;
   transition: box-shadow 0.3s ease-in-out;
 }
 

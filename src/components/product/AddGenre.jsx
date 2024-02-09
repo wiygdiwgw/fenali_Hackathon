@@ -1,7 +1,7 @@
 import React from "react";
 
-const ViewedPage = () => {
+const AddGenre = () => {
   return <div></div>;
 };
 
-export default ViewedPage;
+export default AddGenre;
