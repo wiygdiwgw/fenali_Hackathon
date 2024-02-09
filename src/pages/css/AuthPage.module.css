@@ -1,25 +1,51 @@
+.bg {
+  background-color: #303446;
+  padding: 4rem;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  width: 16rem;
+  height: 50vh;
+  background-color: #1a1d29;
+  border-radius: 10px;
   padding: 20px;
+  margin: 0rem 2rem 0rem 38%;
 }
 
 .buttonContainer {
+  height: 2rem;
+  width: 10rem;
+  background-color: #1a1d29;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px #8e8e8e;
+  border-radius: 10px;
+}
+
+.buttonSeperator {
+  height: 1rem;
+  width: 1px;
+  background-color: #8e8e8e;
+  margin-right: 1rem;
 }
 
 .button {
   cursor: pointer;
-  color: #007bff;
+  color: #8e8e8e;
   font-size: 16px;
   margin-right: 20px;
   transition: color 0.3s ease;
 }
 
 .active {
-  color: #000;
+  color: white;
+  background-color: #0a78ff;
+  padding: 0px 10px;
+  border-radius: 6px;
 }
