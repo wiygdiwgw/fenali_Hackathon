@@ -7,10 +7,10 @@ import AddProduct from '../components/product/AddProduct'
 import AddGenre from '../components/product/AddGenre'
 import ProductPage from '../pages/ProductPage'
 import EditPage from './../pages/EditPage'
-import Favorite from '../components/contextPage/Favorite'
-import Viewed from '../components/contextPage/Viewed'
 import Login from '../components/Malik/Login'
 import Register from '../components/Malik/Register'
+import Favorite from '../components/Malik/Favorite'
+import Viewed from '../components/Malik/Viewed'
 
 const MainRoutes = () => {
 	return (

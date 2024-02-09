@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { useAuth } from '../../context/AuthContextProvider'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import styles from './css/Login.module.css'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContextProvider'
 
 const Login = () => {
 	const { handleLogin, error } = useAuth()
