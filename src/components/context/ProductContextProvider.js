@@ -30,9 +30,12 @@ const ProductContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INIT_STATE)
 	const navigate = useNavigate()
 
-	//! Config
+	// //! Config
 	const getConfig = () => {
 		const tokens = JSON.parse(localStorage.getItem('tokens'))
+		if (!tokens || !tokens.access) {
+			return null
+		}
 		const Authorization = `Bearer ${tokens.access}`
 		const config = {
 			headers: { Authorization },
@@ -106,7 +109,7 @@ const ProductContextProvider = ({ children }) => {
 	//! EDIT
 	const editItem = async (id, newProduct) => {
 		try {
-			await axios.patch(`${API}/movie/${id}/`, newProduct, getConfig())
+			await axios.patch(`${API}/movie/${id} /`, newProduct, getConfig())
 			navigate('/products')
 		} catch (error) {
 			console.log(error)

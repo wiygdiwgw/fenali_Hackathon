@@ -8,9 +8,7 @@ const Viewed = () => {
 		<div>
 			<h2>Просмотренные фильмы:</h2>
 			<ul>
-				{viewed.map(elem => (
-					<li key={elem.id}>{elem.title}</li>
-				))}
+				{viewed && viewed.map(elem => <li key={elem.id}>{elem.title}</li>)}
 			</ul>
 		</div>
 	)

@@ -13,13 +13,13 @@ root.render(
 	<BrowserRouter>
 		<ProductContextProvider>
 			<AuthContextProvider>
-				<ViewedContextProvider>
-					<FavoriteContextProvider>
-						<CommentContextProvider>
+				<FavoriteContextProvider>
+					<CommentContextProvider>
+						<ViewedContextProvider>
 							<App />
-						</CommentContextProvider>
-					</FavoriteContextProvider>
-				</ViewedContextProvider>
+						</ViewedContextProvider>
+					</CommentContextProvider>
+				</FavoriteContextProvider>
 			</AuthContextProvider>
 		</ProductContextProvider>
 	</BrowserRouter>

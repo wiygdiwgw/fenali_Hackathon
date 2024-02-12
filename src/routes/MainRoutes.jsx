@@ -10,7 +10,8 @@ import EditPage from './../pages/EditPage'
 import Login from '../components/Malik/Login'
 import Register from '../components/Malik/Register'
 import Favorite from '../components/Malik/Favorite'
-import Viewed from '../components/Malik/Viewed'
+import Details from '../components/product/Details'
+import ViewedPage from '../pages/ViewedPage'
 
 const MainRoutes = () => {
 	return (
@@ -18,7 +19,8 @@ const MainRoutes = () => {
 			<Route path='/' element={<HomePage />} />
 			<Route path='/products' element={<ProductPage />} />
 			<Route path='/fav' element={<Favorite />} />
-			<Route path='/viewed' element={<Viewed />} />
+			<Route path='/viewed' element={<ViewedPage />} />
+			<Route path='/det/:id' element={<Details />} />
 			<Route path='/edit/:id' element={<EditPage />} />
 			<Route path='/addProduct' element={<AddProduct />} />
 			<Route path='/addCategory' element={<AddGenre />} />

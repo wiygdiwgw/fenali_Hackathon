@@ -16,6 +16,8 @@ const reducer = (state = INIT_STATE, action) => {
 			return { ...state, comments: [...state.comments, action.payload] }
 		case ACTIONS.CHECK_COMMENT:
 			return { ...state, comments: [...state.comments, action.payload] }
+		case ACTIONS.LIKE_COMMENT:
+			return { ...state, comments: [...state.comments, action.payload] }
 		case ACTIONS.DELETE_COMMENT:
 			return {
 				...state,
@@ -33,30 +35,47 @@ export const useComment = () => useContext(CommentContext)
 const CommentContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INIT_STATE)
 
+	// //! Config
+	const getConfig = () => {
+		const tokens = JSON.parse(localStorage.getItem('tokens'))
+		if (!tokens || !tokens.access) {
+			return null
+		}
+		const Authorization = `Bearer ${tokens.access}`
+		const config = {
+			headers: { Authorization },
+		}
+		return config
+	}
+
 	//! ADD COMMENTS
 	const addComment = async newComment => {
 		try {
-			const response = await axios.post(`${API}/comment/`, newComment)
+			const response = await axios.post(
+				`${API}/comment/`,
+				newComment,
+				getConfig()
+			)
 			dispatch({ type: ACTIONS.ADD_COMMENT, payload: response.data })
 		} catch (error) {
-			console.error('Ошибка при добавлении комментария:', error)
+			console.log('Ошибка при добавлении комментария:', error.message)
 		}
 	}
 
 	//! GET COMMENTS
 	const getComments = async () => {
 		try {
-			const response = await axios(`${API}/comment/`)
+			const response = await axios(`${API}/comment/`, getConfig())
 			dispatch({ type: ACTIONS.GET_COMMENTS, payload: response.data })
 		} catch (error) {
-			console.error('Ошибка при загрузке комментариев:', error)
+			console.log('Ошибка при загрузке комментариев:', error.message)
 		}
 	}
 
 	//! EDIT
 	const editComment = async (id, newComment) => {
 		try {
-			await axios.patch(`${API}/comment/${id}/`, newComment)
+			await axios.patch(`${API}/comment/${id}/`, newComment, getConfig())
 		} catch (error) {
 			console.log(error)
 		}
@@ -65,14 +84,13 @@ const CommentContextProvider = ({ children }) => {
 	//! CHECK COMMENT
 	const checkComment = async id => {
 		try {
-			const response = await axios(`${API}/comment/${id}/`)
-			// return !!response.data
+			const response = await axios(`${API}/comment/${id}/`, getConfig())
 			dispatch({
 				type: ACTIONS.CHECK_COMMENT,
 				payload: response.data,
 			})
 		} catch (error) {
-			console.error('Ошибка при проверке комментария:', error)
+			console.log('Ошибка при проверке комментария:', error.message)
 			return false
 		}
 	}
@@ -80,16 +98,28 @@ const CommentContextProvider = ({ children }) => {
 	//! DELETE COMMENTS
 	const deleteComment = async id => {
 		try {
-			await axios.delete(`${API}/comment/${id}/`)
+			await axios.delete(`${API}/comment/${id}/`, getConfig())
 			dispatch({ type: ACTIONS.DELETE_COMMENT, payload: id })
 		} catch (error) {
-			console.error('Ошибка при удалении комментария:', error)
+			console.log('Ошибка при удалении комментария:', error.message)
+		}
+	}
+
+	//! LIKE COMMENT
+	const likeComment = async id => {
+		try {
+			await axios.post(`${API}/comment/${id}/like/`, getConfig())
+			dispatch({ type: ACTIONS.LIKE_COMMENT, payload: id })
+		} catch (error) {
+			console.log('Ошибка при лайке комментария: ' + error.message)
 		}
 	}
 
 	useEffect(() => {
 		getComments()
 	}, [])
+
+	if (!children) return null
 
 	return (
 		<CommentContext.Provider
@@ -100,6 +130,7 @@ const CommentContextProvider = ({ children }) => {
 				editComment,
 				checkComment,
 				deleteComment,
+				likeComment,
 			}}
 		>
 			{children}

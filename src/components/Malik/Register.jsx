@@ -3,12 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import styles from './css/Register.module.css'
 import { useAuth } from '../context/AuthContextProvider'
-import React, { useState } from 'react'
-
-import { useNavigate } from 'react-router-dom'
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import styles from './css/Register.module.css'
-import { useAuth } from '../context/AuthContextProvider'
 
 const Register = () => {
 	const { handleRegister, error } = useAuth()
@@ -29,18 +23,6 @@ const Register = () => {
 			formData.append('password_confirm', passwordConfirm)
 			handleRegister(formData)
 			navigate('/login')
-		}
-	}
-	const handleSave = () => {
-		if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
-			alert('Заполните все поля!')
-		} else {
-			let formData = new FormData()
-			formData.append('email', email)
-			formData.append('password', password)
-			formData.append('password_confirm', passwordConfirm)
-			handleRegister(formData)
-			navigate('/register-success')
 		}
 	}
 

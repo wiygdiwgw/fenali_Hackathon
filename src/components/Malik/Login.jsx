@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContextProvider'
 
 const Login = () => {
 	const { handleLogin, error } = useAuth()
+
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showPassword, setShowPassword] = useState(false)
@@ -20,7 +21,7 @@ const Login = () => {
 			formData.append('email', email)
 			formData.append('password', password)
 			handleLogin(formData, email)
-			navigate('/')
+			navigate('/products')
 		}
 	}
 

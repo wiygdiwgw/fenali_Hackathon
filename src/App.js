@@ -5,11 +5,11 @@ import Navbar from './components/homepage/Navbar'
 
 const App = () => {
 	return (
-		<div>
+		<>
 			<Navbar />
 			<MainRoutes />
 			<Footer />
-		</div>
+		</>
 	)
 }
 
