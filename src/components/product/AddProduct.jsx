@@ -34,7 +34,7 @@ const AddProduct = () => {
 
 	return (
 		<div>
-			<h1>Админ</h1>
+			<h1>Добавление фильма/сериала</h1>
 			<select onChange={e => setGenre(e.target.value)}>
 				<option>Выбрать категорию</option>
 				{genres &&

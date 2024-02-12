@@ -35,37 +35,53 @@ export const useFavorite = () => useContext(FavoriteContext)
 const FavoriteContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INIT_STATE)
 
+	// //! Config
+	const getConfig = () => {
+		const tokens = JSON.parse(localStorage.getItem('tokens'))
+		if (!tokens || !tokens.access) {
+			return null
+		}
+		const Authorization = `Bearer ${tokens.access}`
+		const config = {
+			headers: { Authorization },
+		}
+		return config
+	}
+
 	//! ADD FAVORITE
 	const addFavorite = async newFavorite => {
 		try {
 			const response = await axios.post(
 				`${API}/favorite/favorite/`,
-				newFavorite
+				newFavorite,
+				getConfig()
 			)
 			dispatch({ type: ACTIONS.ADD_FAVORITE, payload: response.data })
 		} catch (error) {
-			console.error('Ошибка при добавлении в избранное:', error)
+			console.log('Ошибка при добавлении в избранное:', error)
 		}
 	}
 
 	//! GET FAVORITES
 	const getFavorites = async () => {
 		try {
-			const response = await axios(`${API}/favorite/favorite/`)
+			const response = await axios(`${API}/favorite/favorite/`, getConfig())
 			dispatch({ type: ACTIONS.GET_FAVORITES, payload: response.data })
 		} catch (error) {
-			console.error('Ошибка при загрузке избранных элементов:', error)
+			console.log('Ошибка при загрузке избранных элементов:', error)
 		}
 	}
 
 	//! CHECK FAVORITE
 	const checkFavorite = async id => {
 		try {
-			const response = await axios(`${API}/favorite/favorite/${id}/`)
-			// return !!response.data
+			const response = await axios(
+				`${API}/favorite/favorite/${id}/`,
+				getConfig()
+			)
 			dispatch({ type: ACTIONS.CHECK_FAVORITE, payload: response.data })
 		} catch (error) {
-			console.error('Ошибка при проверке избранного элемента:', error)
+			console.log('Ошибка при проверке избранного элемента:', error)
 			return false
 		}
 	}
@@ -73,10 +89,10 @@ const FavoriteContextProvider = ({ children }) => {
 	//! DELETE FAVORITE
 	const deleteFavorite = async id => {
 		try {
-			await axios.delete(`${API}/favorite/favorite/${id}/`)
+			await axios.delete(`${API}/favorite/favorite/${id}/`, getConfig())
 			dispatch({ type: ACTIONS.DELETE_FAVORITE, payload: id })
 		} catch (error) {
-			console.error('Ошибка при удалении избранного:', error)
+			console.log('Ошибка при удалении избранного:', error)
 		}
 	}
 

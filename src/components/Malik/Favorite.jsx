@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 
-import ProductCard from '../product/ProductCard'
 import { useFavorite } from '../context/FavoriteContextProvider'
 
-const Favorite = () => {
+const Favorite = ({ elem, id }) => {
 	const { favorites, getFavorites } = useFavorite()
 
 	useEffect(() => {
@@ -14,11 +13,8 @@ const Favorite = () => {
 		<div>
 			<h2>Избранное</h2>
 			<ul>
-				{favorites.map(favorite => (
-					<li key={favorite.id}>
-						<ProductCard />
-					</li>
-				))}
+				{favorites &&
+					favorites.map(favorite => <li key={favorite.id}>{elem.title}</li>)}
 			</ul>
 		</div>
 	)

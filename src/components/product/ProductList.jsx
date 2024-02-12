@@ -48,7 +48,7 @@ const ProductList = () => {
 	return (
 		<div>
 			<div>
-				<h1>Product List</h1>
+				<h1>Cinema Online</h1>
 				{chunkedProducts.map((row, rowIndex) => (
 					<div key={rowIndex}>
 						{row.map(elem => (
@@ -59,13 +59,13 @@ const ProductList = () => {
 					</div>
 				))}
 				<div>
-					<button onClick={handlePrevClick}>Prev</button>
+					<button onClick={handlePrevClick}>prev</button>
 					{getPagesCount().map(item => (
 						<button onClick={() => setCurrentPage(item)} key={item}>
 							{item}
 						</button>
 					))}
-					<button onClick={handleNextClick}>Next</button>
+					<button onClick={handleNextClick}>next</button>
 				</div>
 			</div>
 		</div>
