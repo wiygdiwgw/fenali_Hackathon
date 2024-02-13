@@ -1,6 +1,6 @@
 export const API = 'http://34.125.237.140/api'
 
-export const ADMIN = 'traumqq@gmail.com'
+export const user = 'traumqq@gmail.com'
 
 export const ACTIONS = {
 	GET_PRODUCTS: 'GET_PRODUCTS',

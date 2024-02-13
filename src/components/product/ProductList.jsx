@@ -48,7 +48,7 @@ const ProductList = () => {
 	return (
 		<div>
 			<div>
-				<h1>Cinema Online</h1>
+				<h1>КАТАЛОГ</h1>
 				{chunkedProducts.map((row, rowIndex) => (
 					<div key={rowIndex}>
 						{row.map(elem => (
