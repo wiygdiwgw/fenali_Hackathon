@@ -1,0 +1,62 @@
+.productCard {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 16px;
+	margin-bottom: 16px;
+	background-color: #fff;
+}
+
+.productCard img {
+	width: 100%;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.productCard button {
+	margin-top: 8px;
+	padding: 8px 16px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.productCard button:hover {
+	background-color: #0056b3;
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modalContent {
+	background-color: #fff;
+	padding: 16px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 24px;
+	cursor: pointer;
+	color: #333;
+}
+
+.close:hover {
+	color: #000;
+}
