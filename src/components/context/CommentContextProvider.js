@@ -5,25 +5,23 @@ import { ACTIONS, API } from '../../helpers/const'
 const CommentContext = createContext()
 
 const INIT_STATE = {
-	comments: [],
+	comment: [],
 }
 
 const reducer = (state = INIT_STATE, action) => {
 	switch (action.type) {
 		case ACTIONS.GET_COMMENTS:
-			return { ...state, comments: action.payload }
+			return { ...state, comment: action.payload }
 		case ACTIONS.ADD_COMMENT:
-			return { ...state, comments: [...state.comments, action.payload] }
+			return { ...state, comment: [...state.comment, action.payload] }
 		case ACTIONS.CHECK_COMMENT:
-			return { ...state, comments: [...state.comments, action.payload] }
+			return { ...state, comment: [...state.comment, action.payload] }
 		case ACTIONS.LIKE_COMMENT:
-			return { ...state, comments: [...state.comments, action.payload] }
+			return { ...state, comment: [...state.comment, action.payload] }
 		case ACTIONS.DELETE_COMMENT:
 			return {
 				...state,
-				comments: state.comments.filter(
-					comment => comment.id !== action.payload
-				),
+				comment: state.comment.filter(comment => comment.id !== action.payload),
 			}
 		default:
 			return state
@@ -125,7 +123,7 @@ const CommentContextProvider = ({ children }) => {
 		<CommentContext.Provider
 			value={{
 				getComments,
-				comments: state.comments,
+				comment: state.comment,
 				addComment,
 				editComment,
 				checkComment,

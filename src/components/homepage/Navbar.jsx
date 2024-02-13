@@ -31,7 +31,7 @@ const Navbar = () => {
 			<div className={styles.left}>
 				<div className={styles.logo}>
 					<Link className={styles.logoLink} to='/products'>
-						MALIK PIDR
+						CINEMA ONLINE
 					</Link>
 				</div>
 			</div>
